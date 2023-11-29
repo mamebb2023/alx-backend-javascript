@@ -1,2 +1,2 @@
-# Alx Backend Short Specalization
-Repo for Backend Specalization
+# Alx Backend JavaScript Short Specalization
+Repo for Backend JavaScript Specalization
