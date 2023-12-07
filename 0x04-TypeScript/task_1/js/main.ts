@@ -1,4 +1,4 @@
-export interface Teacher {
+interface Teacher {
     readonly firstName: string;
     readonly lastName: string;
     fullTimeEmployee: true | false;
@@ -7,6 +7,14 @@ export interface Teacher {
     [att: string]: any;
 }
 
-export interface Directors extends Teacher {
+interface Directors extends Teacher {
+    numberOfReports: number;
+}
 
+interface printTeacherFunction {
+    (firstName: string, lastName: string): string;
+}
+
+function printTeacher(firstName: string, lastName: string){
+    return `${firstName[0]}. ${lastName}`;
 }
