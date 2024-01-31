@@ -1,13 +1,16 @@
 const http = require('http');
 const { readFileSync, existsSync } = require('fs');
 
-function getStudentsString(path) {
+const host = '127.0.0.1';
+const port = 1245;
+
+function countStudents(path) {
   if (!existsSync(path)) {
     throw new Error('Cannot load the database');
   }
 
   const content = readFileSync(path, 'utf8').trim().split('\n');
-  let finalString = `Number of students: ${content.length - 1}\n`;
+  let s = `Number of students: ${content.length - 1}\n`;
   const countHolder = new Map();
   for (const row of content.splice(1)) {
     const tmp = row.split(',');
@@ -22,12 +25,12 @@ function getStudentsString(path) {
   }
 
   for (const [fieldName, students] of countHolder) {
-    finalString += `Number of students in ${fieldName}: ${
+    s += `Number of students in ${fieldName}: ${
       students.length
     }. List: ${students.join(', ')}\n`;
   }
-  finalString = finalString.slice(0, finalString.length - 1);
-  return finalString;
+  s = s.slice(0, s.length - 1);
+  return s;
 }
 
 const app = http.createServer((req, res) => {
@@ -39,8 +42,8 @@ const app = http.createServer((req, res) => {
       break;
     case '/students':
       try {
-        const finalString = getStudentsString(process.argv[2]);
-        res.end(`This is the list of our students\n${finalString}`);
+        const s = countStudents(process.argv[2]);
+        res.end(`This is the list of our students\n${s}`);
       } catch (error) {
         res.end(`This is the list of our students\n${error.message}`);
       }
@@ -50,6 +53,6 @@ const app = http.createServer((req, res) => {
   }
 });
 
-app.listen(1245, '127.0.0.1');
+app.listen(port, host);
 
 module.exports = app;
