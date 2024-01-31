@@ -12,7 +12,7 @@ function countStudents(path) {
       for (const row of content.splice(1)) {
         const tmp = row.split(',');
         const fieldName = tmp[tmp.length - 1];
-        const studentName = tmp.splice(0, 1).join();
+        const studentName = tmp.splice(0, 1).join(' ');
 
         if (fields.has(fieldName)) {
           fields.get(fieldName).push(studentName);
