@@ -6,7 +6,7 @@ function countStudents(path) {
       if (err) {
         reject(new Error('Cannot load the database'));
       }
-      const content = data.trim().split('\n');
+      const content = data.toString('utf-8').trim().split('\n');
       console.log(`Number of students: ${content.length - 1}`);
       const countHolder = new Map();
       for (const row of content.splice(1)) {
