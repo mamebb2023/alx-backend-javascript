@@ -8,21 +8,25 @@ function countStudents(path) {
       }
       const content = data.trim().split('\n');
       console.log(`Number of students: ${content.length - 1}`);
-      const fields = new Map();
+      const countHolder = new Map();
       for (const row of content.splice(1)) {
         const tmp = row.split(',');
         const fieldName = tmp[tmp.length - 1];
         const studentName = tmp.splice(0, 1).join(' ');
 
-        if (fields.has(fieldName)) {
-          fields.get(fieldName).push(studentName);
+        if (countHolder.has(fieldName)) {
+          countHolder.get(fieldName).push(studentName);
         } else {
-          fields.set(fieldName, [studentName]);
+          countHolder.set(fieldName, [studentName]);
         }
       }
 
-      for (const [fieldName, students] of fields) {
-        console.log(`Number of students in ${fieldName}: ${students.length}. List: ${students.join(', ')}`);
+      for (const [fieldName, students] of countHolder) {
+        console.log(
+          `Number of students in ${fieldName}: ${
+            students.length
+          }. List: ${students.join(', ')}`,
+        );
       }
       resolve();
     });
