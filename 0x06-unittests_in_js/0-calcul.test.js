@@ -3,19 +3,19 @@ const { it, describe } = require('mocha');
 const calculateNumber = require('./0-calcul');
 
 describe('calculateNumber', () => {
-  it('checking if numbers round', () => {
+  it('rounding 1, 3 and returns there sum 4', () => {
     assert.equal(calculateNumber(1, 3), 4);
   });
-  it('checking if numbers round 2nd round', () => {
+  it('rounding 1, 3.7 and returns there sum 5', () => {
     assert.equal(calculateNumber(1, 3.7), 5);
   });
-  it('checking if numbers round 3rd round', () => {
+  it('rounding 1.2, 3.7 and returns there sum 5', () => {
     assert.equal(calculateNumber(1.2, 3.7), 5);
   });
-  it('checking if numbers round 4th round', () => {
+  it('rounding 1.5, 3.7 and returns there sum 6', () => {
     assert.equal(calculateNumber(1.5, 3.7), 6);
   });
-  it('checking negative return', () => {
+  it('rounding -1.3, -3.7 and returns there sum -5', () => {
     assert.equal(calculateNumber(-1.3, -3.7), -5);
   });
 });
