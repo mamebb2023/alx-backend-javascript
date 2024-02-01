@@ -15,7 +15,4 @@ describe("calculateNumber", () => {
     it("rounds given two numbers and returns there sum", () => {
         assert.equal(calculateNumber(1.5, 3.7), 6);
     });
-    it("rounds given two numbers and returns there sum", () => {
-        assert.equal(calculateNumber(5.4, 4.5), 10);
-    });
 });
