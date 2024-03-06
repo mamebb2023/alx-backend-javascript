@@ -7,6 +7,7 @@ function countStudents(path) {
         reject(new Error('Cannot load the database'));
       }
       const content = data.toString('utf-8').trim().split('\n');
+      console.log(`Number of students: ${content.length - 1}`);
       const fields = new Map();
       for (const row of content.splice(1)) {
         const tmp = row.split(',');
@@ -20,7 +21,6 @@ function countStudents(path) {
         }
       }
 
-      console.log(`Number of students: ${content.length - 1}`);
       for (const [fieldName, students] of fields) {
         console.log(`Number of students in ${fieldName}: ${students.length}. List: ${students.join(', ')}`);
       }
