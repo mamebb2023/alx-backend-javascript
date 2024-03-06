@@ -1,5 +1,10 @@
 const fs = require('fs');
 
+/**
+ * Reads CSV file asynchronously, parses the data and
+ * prints it to stdout.
+ * @param {string} dbPath - path to csv file.
+ */
 function countStudents(dbPath) {
   return new Promise((resolve, reject) => {
     fs.readFile(dbPath, 'utf-8', (error, data) => {
